@@ -7,23 +7,36 @@ from bittrex import bittrex
 api = bittrex('ec95eb5569464074a68a365edf32b364', '47ed9c9a6b194010a08af9f14cb2f77f')
  
 
-def priceMarket(trade,currency,timeInSeconds):
-	while 1:
-	    # Market to trade at
-		market = '{0}-{1}'.format(trade, currency)
-		# Amount of coins to buy
-		#amount = 100
-		# How big of a profit you want to make
-		#multiplier = 1.1
+def priceMarket(trade,currency):
+	
+	# Market to trade at
+	market = '{0}-{1}'.format(trade, currency)
+	# Amount of coins to buy
+	#amount = 100
+	# How big of a profit you want to make
+	#multiplier = 1.1
 
-		# Getting the BTC price for DOGE
-		summary = api.getmarketsummary(market)
-		price = summary[0]['Last'] 
-		print ('The price for {0} is {1:.8f} {2}.').format(currency, price, trade)
-		time.sleep(timeInSeconds)
+	# Getting the BTC price for DOGE
+	summary = api.getmarketsummary(market)
+	price = summary[0]['Last'] 
+	print summary[0]
+	print ('The price for {0} is {1:.8f} {2}.').format(currency, price, trade)
+
+def priceBalances():
+		
+	summary = api.getbalances()
+	print summary
+	#print summary[0]['Currency']
+	#print summary[1]['Currency']
+	#print summary[0]['ANS']
+
+	
 
 
-priceMarket('USDT','btc',10)
+priceBalances()		
+#priceMarket('USDT','BTC')
+#priceMarket('USDT','ANS')
+
 	 
 
 
