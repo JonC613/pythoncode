@@ -25,7 +25,19 @@ def priceMarket(trade,currency):
 def priceBalances():
 		
 	summary = api.getbalances()
+	#print len(summary)
+	#print summary
+	#Remove all currencies with a zero balance
+	summary = [d for d in summary if d['Balance'] != 0]
 	print summary
+	for i in summary:
+		c=i['Currency']
+		b=i['Balance']
+		print ('The Balance for {0} = {1}.').format(c,b)
+			
+
+	#print sum
+
 	#print summary[0]['Currency']
 	#print summary[1]['Currency']
 	#print summary[0]['ANS']
